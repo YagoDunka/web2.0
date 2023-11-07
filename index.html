@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha pagina</title>
+</head>
+<body>
+    <h1>Cadastro</h1>
+    <div>
+        <label for="nome">Informe nome</label>
+        <input type="text" id="nome" placeholder="Informe nome">
+
+        <label for="sobreNome">Informe nome</label>
+        <input type="text" id="sobreNome" placeholder="Informe sobrenome">
+
+        <button onclick="gerarNomeCompleto(nome)">Verificar</button>
+        <hr>
+        <p> Nome completo: <span></span></p>
+    </div>
+
+    <script>
+        function gerarNomeCompleto(nome){
+            var inputNome = document.getElementById("nome")
+            if(inputNome.value == ''){
+                alert("Informe nome")
+                inputNome.focus()
+                return
+            }
+            var inputSobreNome = document.getElementById("sobreNome")
+            if(inputSobreNome.value == ''){
+                alert("Informe sobrenome")
+                inputSobreNome.focus()
+                return
+            }
+
+            var nomeCompleto = document.getElementsByTagName("span")
+            
+            nomeCompleto[0].innerHTML = `${inputNome.value} ${inputSobreNome.value}`
+        }
+    </script>
+</body>
+</html>
