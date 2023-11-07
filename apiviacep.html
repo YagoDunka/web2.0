@@ -3,9 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Api CEP</title>
 </head>
 <body>
+    <div>
+        <label for="cep">Informe cep</label>
+        <input type="text" id="cep" placeholder="Informe CEP" onblur="verEndereco()">
+
+        <hr>
+        <label for="rua">Informe rua</label>
+        <input type="text" id="rua" placeholder="informe rua">
+
+        <hr>
+        <label for="Cidade">Informe a cidade</label>
+        <input type="text" id="cidade" placeholder="informe cidade">
+
+        <hr>
+        <label for="Estado">Informe o estado</label>
+        <input type="text" id="estado" placeholder="informe estado">
+
+        <hr>
+        <label for="Bairro">Informe o bairro</label>
+        <input type="text" id="bairro" placeholder="informe bairro">
+
+    </div>
+    <button onclick="verEndereco()">Ver endereço</button>
     
+    <script>
+        function verEndereco(){
+            
+            var inputCep = document.getElementById("cep")
+            if(inputCep.value == ''){
+                alert("Informe o CEP")
+                return
+            }
+            
+            fetch(`http://viacep.com.br/ws/${inputCep.value}/json/`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                document.getElementById("rua").value = data.logradouro
+                document.getElementById("cidade").value = data.bairro
+                document.getElementById("estado").value = data.uf
+                document.getElementById("bairro").value = data.bairro
+            } )
+        }
+    </script>
 </body>
 </html>
