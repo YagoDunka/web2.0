@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="https://www.w3schools.com/js/default.asp">Para saber mais!</a><hr>
+    
+    <button onclick="soma(100,50,mostrarEmParagrafo)">Mostrar em paragrafo</button>
+
+    <button onclick="soma(100,50,mostrarComAlert)">Mostrar em alert</button>
+
+    <p>Resultado:<span></span></p>
+
+    <script>
+        function soma(n1,n2, callBack){
+            let resultado = n1 + n2
+            callBack(resultado)
+        }
+
+        function mostrarEmParagrafo(text){
+            document.getElementsByTagName("span")[0].innerHTML = text
+        }
+
+        function mostrarComAlert(text){
+            alert(text)
+        }
+    </script>
+</body>
+</html>
